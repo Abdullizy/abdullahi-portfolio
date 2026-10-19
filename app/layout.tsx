@@ -24,10 +24,10 @@ export const viewport: Viewport = {
 }
 
 // Runs before first paint: restores the saved theme, sets the accent, and
-// skips the intro animation if it was already seen in this browser session.
+// skips the intro animation if it was already seen in this tab (only when settings.introEveryLoad is false).
 const bootScript = `(function(){try{var d=document.documentElement;d.classList.add('js');var t=null;try{t=localStorage.getItem('theme')}catch(e){}
 d.setAttribute('data-theme',t||${JSON.stringify(settings.defaultTheme)});d.setAttribute('data-accent',${JSON.stringify(settings.accent)});
-try{if(/[?&]intro/.test(location.search)){sessionStorage.removeItem('intro-seen')}else if(sessionStorage.getItem('intro-seen')==='1'){d.setAttribute('data-intro','off')}}catch(e){}}catch(e){}})();`
+${settings.introEveryLoad ? '' : "try{if(/[?&]intro/.test(location.search)){sessionStorage.removeItem('intro-seen')}else if(sessionStorage.getItem('intro-seen')==='1'){d.setAttribute('data-intro','off')}}catch(e){}"}}catch(e){}})();`
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

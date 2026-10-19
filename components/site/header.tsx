@@ -53,7 +53,7 @@ export default function Header() {
 
   return (
     <>
-      <a className="site-logo logo-chip fixed left-3 top-3 z-40 flex items-center justify-center p-2 sm:left-8 sm:top-5" href="#top" aria-label="Back to top">
+      <a className="site-logo logo-chip fixed left-3 top-3 z-40 flex items-center justify-center p-2 sm:left-8 sm:top-5" href="/" aria-label="Reload the home page">
         <Logo className="h-auto w-9 sm:w-11" />
       </a>
 

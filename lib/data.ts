@@ -30,6 +30,9 @@ export const profile = {
 export const settings = {
   accent: 'violet' as 'violet' | 'lime',
   defaultTheme: 'dark' as 'dark' | 'light',
+  // true  = the intro (animated A) plays on EVERY page load and reload
+  // false = it plays only the first time someone opens the site in a tab
+  introEveryLoad: true,
 }
 
 export const banner = {

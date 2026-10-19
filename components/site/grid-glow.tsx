@@ -20,7 +20,15 @@ export default function GridGlow() {
       host.style.setProperty('--gy', `${e.clientY - r.top}px`)
     }
     host.addEventListener('pointermove', move)
-    return () => host.removeEventListener('pointermove', move)
+    // stop all the line animations while the hero is out of view
+    const io = new IntersectionObserver(([e]) => {
+      ref.current?.classList.toggle('glow-paused', !e.isIntersecting)
+    })
+    io.observe(host)
+    return () => {
+      host.removeEventListener('pointermove', move)
+      io.disconnect()
+    }
   }, [])
 
   return (
