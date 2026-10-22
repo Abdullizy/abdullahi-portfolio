@@ -6,16 +6,12 @@ export default function Loader() {
   const [gone, setGone] = useState(false)
 
   useEffect(() => {
-    // Only mark the intro as "seen" once it has fully played, so a quick
-    // refresh while it is still running (or a dev-server reload) shows it again.
-    const t = setTimeout(() => {
-      try {
-        window.sessionStorage.setItem('intro-seen', '1')
-      } catch {
-        /* storage can be blocked; ignore */
-      }
-      setGone(true)
-    }, 3100)
+    try {
+      window.sessionStorage.setItem('intro-seen', '1')
+    } catch {
+      /* storage can be blocked; ignore */
+    }
+    const t = setTimeout(() => setGone(true), 3100)
     return () => clearTimeout(t)
   }, [])
 

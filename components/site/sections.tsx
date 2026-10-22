@@ -3,7 +3,6 @@ import { Icon } from '@/lib/icons'
 import { cn } from '@/lib/utils'
 import * as motion from 'framer-motion/client'
 import { fadeUp, scaleIn } from '@/lib/motion'
-import { NameFx, Stretch } from './fx'
 
 const wrap = 'mx-auto w-full max-w-[1320px] px-5 sm:px-8 lg:px-14'
 const sectionTitle = 't-section text-center font-medium'
@@ -32,9 +31,9 @@ export function Marquee() {
 export function Services() {
   return (
     <section id="services" className={cn(wrap, 'py-20 sm:py-28 lg:py-32')}>
-      <motion.h2 className={sectionTitle} {...fadeUp()}><Stretch>
+      <motion.h2 className={sectionTitle} {...fadeUp()}>
         What I can build for <span className={serifAccent}>you</span>
-      </Stretch></motion.h2>
+      </motion.h2>
       <div className="mt-12 grid grid-cols-1 gap-5 sm:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {services.map((s, i) => (
           <motion.article
@@ -102,9 +101,9 @@ export function Focus() {
 
   return (
     <section className={cn(wrap, 'pb-20 pt-6 sm:pb-28 lg:pt-12')} aria-label="What I focus on">
-      <motion.h2 className={sectionTitle} {...fadeUp()}><Stretch>
+      <motion.h2 className={sectionTitle} {...fadeUp()}>
         Focused on the <span className={serifAccent}>details</span>
-      </Stretch></motion.h2>
+      </motion.h2>
 
       <div className="bend mt-12 grid grid-cols-1 gap-5 sm:mt-16 lg:grid-cols-2 lg:grid-rows-[300px_300px] lg:gap-6">
         {/* Tall: tech stack orbit */}
@@ -205,9 +204,9 @@ export function Focus() {
 export function Process() {
   return (
     <section className={cn(wrap, 'py-16 sm:py-24')}>
-      <motion.h2 className={sectionTitle} {...fadeUp()}><Stretch>
+      <motion.h2 className={sectionTitle} {...fadeUp()}>
         From message to <span className={serifAccent}>live site</span>
-      </Stretch></motion.h2>
+      </motion.h2>
       <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {steps.map((s, i) => (
           <motion.div key={s.num} {...fadeUp(i * 0.12)} className="border-t-2 border-primary pt-5">
@@ -227,7 +226,7 @@ export function About() {
       <motion.div {...fadeUp()} className={cn(card, 'p-7 sm:p-12 lg:p-16')}>
         <div className="font-mono text-sm tracking-wide text-accent-text">&gt; ABOUT</div>
         <h2 className="mt-3.5 text-[clamp(2rem,1rem+3.6vw,3.75rem)] font-medium leading-[1.08] tracking-[-0.04em]">
-          <Stretch>Hi, I&rsquo;m <span className={serifAccent}><NameFx text={profile.name} /></span>.</Stretch>
+          Hi, I&rsquo;m <span className={serifAccent}>{profile.name}</span>.
         </h2>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
           I&rsquo;m a {profile.role.toLowerCase()} based in {profile.city}. {profile.about1}
@@ -250,7 +249,7 @@ export function Statement() {
           {...fadeUp(i * 0.07)}
           className={cn('t-statement inline-block font-medium', i >= 5 && 'text-accent-text')}
         >
-          <Stretch>{w}</Stretch>
+          {w}
         </motion.span>
       ))}
     </section>

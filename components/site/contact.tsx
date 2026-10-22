@@ -2,8 +2,6 @@
 
 import { useState, type FormEvent } from 'react'
 import { profile } from '@/lib/data'
-import { Stretch } from './fx'
-import ShatterBg from './shatter-bg'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { motion } from 'framer-motion'
@@ -50,7 +48,6 @@ export default function Contact() {
   return (
     <section id="contact" className="mx-auto w-full max-w-[1320px] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-14">
       <motion.div {...fadeUp()} className="contact-shape relative overflow-hidden bg-primary px-6 py-14 text-center text-primary-foreground sm:px-12 sm:py-20 lg:py-24">
-        <ShatterBg variant="banner" soft />
         <motion.div
           className="pointer-events-none absolute inset-x-0 bottom-0 h-[30%] sm:h-[40%]"
           initial={{ y: 90, opacity: 0 }}
@@ -66,8 +63,10 @@ export default function Contact() {
             <path d={WAVE} />
           </svg>
         </motion.div>
-        <h2 className="t-contact relative mx-auto max-w-3xl font-medium"><Stretch>Have a project in mind? Let&rsquo;s{' '}
-          <span className="font-serif text-[1.13em] font-normal italic tracking-normal">talk.</span></Stretch></h2>
+        <h2 className="t-contact relative mx-auto max-w-3xl font-medium">
+          Have a project in mind? Let&rsquo;s{' '}
+          <span className="font-serif text-[1.13em] font-normal italic tracking-normal">talk.</span>
+        </h2>
         <p className="relative mx-auto mt-5 max-w-xl text-base leading-relaxed sm:text-xl">
           Drop your email and tell me what you need. I&rsquo;ll reply within {profile.replyTime} with a clear next step.
         </p>

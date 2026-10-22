@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { AnimatePresence, motion, type PanInfo, type Variants } from 'framer-motion'
 import { testimonials } from '@/lib/data'
 import { ease } from '@/lib/motion'
-import { Stretch } from './fx'
 
 const initials = (name: string) =>
   name
@@ -50,8 +49,10 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease }}
-      ><Stretch>Kind words from{' '}
-        <span className="font-serif text-[1.13em] font-normal italic tracking-normal text-accent-text">clients</span></Stretch></motion.h2>
+      >
+        Kind words from{' '}
+        <span className="font-serif text-[1.13em] font-normal italic tracking-normal text-accent-text">clients</span>
+      </motion.h2>
 
       <div className="relative mx-auto mt-12 h-[400px] w-full max-w-[680px] sm:mt-16 sm:h-[360px]" style={{ touchAction: 'pan-y' }}>
         {/* cards waiting behind the top one */}

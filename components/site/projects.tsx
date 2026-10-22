@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import { cn } from '@/lib/utils'
 import { motion } from 'framer-motion'
-import { Stretch } from './fx'
 import { fadeUp } from '@/lib/motion'
 import Tilt from './tilt'
 
@@ -24,7 +23,9 @@ export default function Projects() {
         <motion.h2
           {...fadeUp()}
           className="text-center font-mono text-[clamp(2.4rem,1rem+5vw,5rem)] font-normal tracking-tight"
-        ><Stretch>Projects</Stretch></motion.h2>
+        >
+          Projects
+        </motion.h2>
 
         <div className="mt-12 grid grid-cols-1 gap-12 sm:mt-16 md:grid-cols-2 md:gap-10">
           {projects.map((p, i) => (

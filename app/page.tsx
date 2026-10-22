@@ -7,12 +7,10 @@ import Projects from '@/components/site/projects'
 import Testimonials from '@/components/site/testimonials'
 import Contact from '@/components/site/contact'
 import Footer from '@/components/site/footer'
-import ShatterBg from '@/components/site/shatter-bg'
 
 export default function Home() {
   return (
     <>
-      <ShatterBg />
       <Loader />
       <Header />
       <main>

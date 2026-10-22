@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Icon, chatIcon, socialIcons, socialLabels, type SocialKey } from '@/lib/icons'
 import { after } from '@/lib/utils'
 import Tilt from './tilt'
-import GridGlow from './grid-glow'
 import TypewriterHeading from './typewriter-heading'
 
 export default function Hero() {
@@ -11,9 +10,8 @@ export default function Hero() {
 
   return (
     <section id="top" className="grid-bg relative overflow-hidden">
-      <GridGlow />
       <div
-        className="orb pointer-events-none absolute -right-40 -top-56 size-[560px] rounded-full bg-[radial-gradient(circle,var(--orb)_0%,transparent_68%)] lg:-right-48 lg:-top-72 lg:size-[820px]"
+        className="orb pointer-events-none absolute -right-28 -top-40 size-[420px] rounded-full bg-[var(--orb)] blur-[110px] lg:size-[600px] lg:blur-[130px]"
         aria-hidden="true"
       />
       <div className="relative mx-auto flex w-full max-w-[1320px] flex-col items-center gap-9 px-5 pb-20 pt-28 sm:px-8 lg:flex-row lg:items-center lg:gap-14 lg:px-14 lg:pb-28 lg:pt-28">

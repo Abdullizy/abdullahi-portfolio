@@ -5,7 +5,6 @@ import '@fontsource/instrument-serif/400-italic.css'
 import './globals.css'
 import { profile, settings } from '@/lib/data'
 import MotionProvider from '@/components/site/motion-provider'
-import Cursor from '@/components/site/cursor'
 
 export const metadata: Metadata = {
   title: `${profile.name} | ${profile.role}`,
@@ -24,10 +23,10 @@ export const viewport: Viewport = {
 }
 
 // Runs before first paint: restores the saved theme, sets the accent, and
-// skips the intro animation if it was already seen in this tab (only when settings.introEveryLoad is false).
+// skips the intro animation if it was already seen in this browser session.
 const bootScript = `(function(){try{var d=document.documentElement;d.classList.add('js');var t=null;try{t=localStorage.getItem('theme')}catch(e){}
 d.setAttribute('data-theme',t||${JSON.stringify(settings.defaultTheme)});d.setAttribute('data-accent',${JSON.stringify(settings.accent)});
-${settings.introEveryLoad ? '' : "try{if(/[?&]intro/.test(location.search)){sessionStorage.removeItem('intro-seen')}else if(sessionStorage.getItem('intro-seen')==='1'){d.setAttribute('data-intro','off')}}catch(e){}"}}catch(e){}})();`
+try{if(sessionStorage.getItem('intro-seen')==='1'){d.setAttribute('data-intro','off')}}catch(e){}}catch(e){}})();`
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -43,7 +42,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body>
         <MotionProvider>{children}</MotionProvider>
-        <Cursor />
       </body>
     </html>
   )

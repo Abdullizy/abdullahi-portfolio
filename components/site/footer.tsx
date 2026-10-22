@@ -1,6 +1,4 @@
 import { profile } from '@/lib/data'
-import { NameFx } from './fx'
-import CircleCta from './circle-cta'
 
 export default function Footer() {
   const links = [
@@ -22,19 +20,31 @@ export default function Footer() {
               <a className="transition-colors hover:text-accent-text" href="#contact">Contact</a>
             </nav>
           </div>
-          <div className="flex gap-5 sm:gap-7">
-            <CircleCta href={`https://wa.me/${profile.whatsapp}`} label="Message me" tone="primary" external />
-            <CircleCta href={`mailto:${profile.email}`} label="Email me" tone="light" delay={0.6} />
+          <div className="flex gap-4">
+            <a
+              href={`https://wa.me/${profile.whatsapp}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex size-32 items-center justify-center rounded-full bg-primary p-4 text-center text-lg font-semibold text-primary-foreground transition-transform hover:-translate-y-1 sm:size-36"
+            >
+              Message me
+            </a>
+            <a
+              href={`mailto:${profile.email}`}
+              className="flex size-32 items-center justify-center rounded-full bg-foreground p-4 text-center text-lg font-semibold text-background transition-transform hover:-translate-y-1 sm:size-36"
+            >
+              Email me
+            </a>
           </div>
         </div>
 
         <div className="mt-14 select-none font-serif text-[clamp(3.5rem,17vw,10rem)] italic leading-none text-foreground">
-          <NameFx text={profile.name} />
+          {profile.name}
         </div>
 
         <div className="mt-8 flex flex-col gap-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            &copy; {new Date().getFullYear()} <NameFx text={profile.name} /> - {profile.role}
+            &copy; {new Date().getFullYear()} {profile.name} - {profile.role}
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {links.map((l) => (

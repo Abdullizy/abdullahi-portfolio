@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { profile } from '@/lib/data'
 import { ease } from '@/lib/motion'
 import Logo from './logo'
@@ -17,26 +17,12 @@ const links = [
 
 type Theme = 'dark' | 'light'
 
-// The Menu button drops its colour down and swaps to the next one every 5 seconds.
-const menuColors = [
-  { bg: 'var(--accent)', fg: 'var(--on-accent)' },
-  { bg: '#ec4899', fg: '#ffffff' },
-  { bg: '#f97316', fg: '#ffffff' },
-  { bg: '#0d9488', fg: '#ffffff' },
-]
-
 export default function Header() {
   const [theme, setTheme] = useState<Theme>('dark')
   const [open, setOpen] = useState(false)
-  const [ci, setCi] = useState(0)
 
   useEffect(() => {
     setTheme((document.documentElement.dataset.theme as Theme) ?? 'dark')
-  }, [])
-
-  useEffect(() => {
-    const t = setInterval(() => setCi((c) => (c + 1) % menuColors.length), 5000)
-    return () => clearInterval(t)
   }, [])
 
   const toggleTheme = () => {
@@ -53,8 +39,8 @@ export default function Header() {
 
   return (
     <>
-      <a className="site-logo logo-chip fixed left-3 top-3 z-40 flex items-center justify-center p-2 sm:left-8 sm:top-5" href="/" aria-label="Reload the home page">
-        <Logo className="h-auto w-9 sm:w-11" />
+      <a className="site-logo absolute left-3 top-3 z-40 sm:left-8 sm:top-5" href="#top" aria-label="Back to top">
+        <Logo className="h-auto w-[68px] sm:w-24" />
       </a>
 
       <div className="fixed right-3 top-3 z-50 flex items-center gap-2 sm:right-8 sm:top-5">
@@ -74,29 +60,15 @@ export default function Header() {
           type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
-          className="menu-cut group relative flex h-11 cursor-pointer items-center gap-3 pl-5 pr-4 sm:h-12 sm:pl-6 sm:pr-5"
-          style={{ color: menuColors[ci].fg, transition: 'color 0.4s' }}
+          className="menu-cut group relative flex h-11 cursor-pointer items-center gap-3 bg-foreground pl-5 pr-4 text-background sm:h-12 sm:pl-6 sm:pr-5"
         >
-          {/* colour layers: the new one slides in from the top while the old one drops out the bottom */}
-          <AnimatePresence initial={false}>
-            <motion.span
-              key={ci}
-              className="absolute inset-0"
-              style={{ background: menuColors[ci].bg }}
-              initial={{ y: '-100%' }}
-              animate={{ y: '0%' }}
-              exit={{ y: '100%' }}
-              transition={{ duration: 0.7, ease: [0.7, 0, 0.2, 1] }}
-              aria-hidden="true"
-            />
-          </AnimatePresence>
           {/* the word rolls up on hover */}
-          <span className="relative z-10 block h-[1.25em] overflow-hidden font-mono text-sm font-semibold uppercase leading-[1.25] tracking-[0.18em] sm:text-[15px]">
+          <span className="relative block h-[1.25em] overflow-hidden font-mono text-sm font-semibold uppercase leading-[1.25] tracking-[0.18em] sm:text-[15px]">
             <span className="block transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.2,1)] group-hover:-translate-y-full">Menu</span>
             <span className="absolute left-0 top-full block transition-transform duration-500 ease-[cubic-bezier(0.7,0,0.2,1)] group-hover:-translate-y-full">Open</span>
           </span>
           {/* two bars that slide apart, then lean into a cross */}
-          <span className="relative z-10 block h-3 w-6" aria-hidden="true">
+          <span className="relative block h-3 w-6" aria-hidden="true">
             <i className="absolute left-0 top-0 h-0.5 w-full origin-left bg-current transition-all duration-300 group-hover:w-3/4" />
             <i className="absolute bottom-0 right-0 h-0.5 w-full origin-right bg-current transition-all duration-300 group-hover:w-1/2" />
           </span>

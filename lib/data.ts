@@ -18,7 +18,7 @@ export const profile = {
   about1:
     'I use HTML, CSS, JavaScript and React, together with modern tools, to build websites quickly without cutting corners on design.',
   about2: 'ONE SENTENCE ABOUT WHAT MAKES YOU DIFFERENT',
-  photo: '', // e.g. '/me.png' after you put me.png inside the public folder
+  photo: '/me.png', // e.g. '/me.png' after you put me.png inside the public folder
   socials: {
     github: '#',
     linkedin: '#',
@@ -30,9 +30,6 @@ export const profile = {
 export const settings = {
   accent: 'violet' as 'violet' | 'lime',
   defaultTheme: 'dark' as 'dark' | 'light',
-  // true  = the intro (animated A) plays on EVERY page load and reload
-  // false = it plays only the first time someone opens the site in a tab
-  introEveryLoad: true,
 }
 
 export const banner = {
